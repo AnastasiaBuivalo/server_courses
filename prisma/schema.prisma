@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model all_course {
+  id              Int               @id @default(autoincrement()) @db.UnsignedInt
+  title           String            @db.VarChar(100)
+  descript        String            @db.VarChar(1000)
+  price           Decimal?          @db.Decimal(3, 2)
+  duration        Int?              @db.UnsignedInt
+  img             String?           @db.VarChar(100)
+  lecturer_id     Int?              @db.UnsignedInt
+  lecturers       lecturers?        @relation(fields: [lecturer_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "all_course_ibfk_1")
+  lecturer_course lecturer_course[]
+  student_course  student_course[]
+
+  @@index([lecturer_id], map: "lecturer_id")
+}
+
+model lecturer_course {
+  id          Int         @id @default(autoincrement()) @db.UnsignedInt
+  lecturer_id Int?        @db.UnsignedInt
+  course_id   Int?        @db.UnsignedInt
+  lecturers   lecturers?  @relation(fields: [lecturer_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "lecturer_course_ibfk_1")
+  all_course  all_course? @relation(fields: [course_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "lecturer_course_ibfk_2")
+
+  @@index([course_id], map: "course_id")
+  @@index([lecturer_id], map: "lecturer_id")
+}
+
+model lecturers {
+  id              Int               @id @default(autoincrement()) @db.UnsignedInt
+  fcs             String            @db.VarChar(100)
+  email           String            @db.VarChar(100)
+  password        String            @db.VarChar(100)
+  information     String            @db.VarChar(1000)
+  speciality      String            @db.VarChar(1000)
+  experience      String            @db.VarChar(100)
+  all_course      all_course[]
+  lecturer_course lecturer_course[]
+  users           users[]
+}
+
+model student_course {
+  id         Int         @id @default(autoincrement()) @db.UnsignedInt
+  student_id Int?        @db.UnsignedInt
+  course_id  Int?        @db.UnsignedInt
+  students   students?   @relation(fields: [student_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "student_course_ibfk_1")
+  all_course all_course? @relation(fields: [course_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "student_course_ibfk_2")
+
+  @@index([course_id], map: "course_id")
+  @@index([student_id], map: "student_id")
+}
+
+model students {
+  id             Int              @id @default(autoincrement()) @db.UnsignedInt
+  fcs            String           @db.VarChar(100)
+  email          String           @db.VarChar(100)
+  password       String           @db.VarChar(100)
+  information    String           @db.VarChar(1000)
+  student_course student_course[]
+  users          users[]
+}
+
+model users {
+  id          Int        @id @default(autoincrement()) @db.UnsignedInt
+  role        String     @db.VarChar(20)
+  student_id  Int?       @db.UnsignedInt
+  lecturer_id Int?       @db.UnsignedInt
+  students    students?  @relation(fields: [student_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "users_ibfk_1")
+  lecturers   lecturers? @relation(fields: [lecturer_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "users_ibfk_2")
+
+  @@index([lecturer_id], map: "lecturer_id")
+  @@index([student_id], map: "student_id")
+}
