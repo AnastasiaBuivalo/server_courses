@@ -1,0 +1,129 @@
+{
+	"backupCourses": [
+		{
+			"id": "1",
+			"title": "aaaa",
+			"descript": "555555",
+			"price": null,
+			"duration": null,
+			"img": null,
+			"lecturer_id": null
+		},
+		{
+			"id": "2",
+			"title": "bbbb",
+			"descript": "77777",
+			"price": null,
+			"duration": null,
+			"img": null,
+			"lecturer_id": null
+		},
+		{
+			"id": "3",
+			"title": "Суперкурс",
+			"descript": "гений за 5 минут",
+			"price": "100",
+			"duration": "0",
+			"img": null,
+			"lecturer_id": "1"
+		},
+		{
+			"id": "4",
+			"title": "Test",
+			"descript": "test",
+			"price": "1",
+			"duration": "1",
+			"img": null,
+			"lecturer_id": "1"
+		},
+		{
+			"id": "5",
+			"title": "Test2",
+			"descript": "test",
+			"price": "1",
+			"duration": "1",
+			"img": null,
+			"lecturer_id": "1"
+		}
+	],
+	"backupLecturerCourse": [
+		{
+			"id": "1",
+			"lecturer_id": "1",
+			"course_id": "5"
+		}
+	],
+	"backupLecturers": [
+		{
+			"id": "1",
+			"fcs": "Test",
+			"information": "не люблю тупых",
+			"speciality": "Разработчик",
+			"experience": "Огромный",
+			"user_id": "4"
+		}
+	],
+	"backupStudentCourse": [
+		{
+			"id": "1",
+			"student_id": "1",
+			"course_id": "1"
+		},
+		{
+			"id": "2",
+			"student_id": "2",
+			"course_id": "2"
+		},
+		{
+			"id": "3",
+			"student_id": "3",
+			"course_id": "1"
+		}
+	],
+	"backupStudents": [
+		{
+			"id": "1",
+			"fcs": "a",
+			"information": "a",
+			"user_id": "1"
+		},
+		{
+			"id": "2",
+			"fcs": "b",
+			"information": "b",
+			"user_id": "2"
+		},
+		{
+			"id": "3",
+			"fcs": "nastya",
+			"information": "1",
+			"user_id": "3"
+		}
+	],
+	"backupUsers": [
+		{
+			"id": "1",
+			"role": "Ученик",
+			"email": "a",
+			"password": "11111111"
+		},
+		{
+			"id": "2",
+			"role": "Ученик",
+			"email": "ab",
+			"password": "11111111"
+		},
+		{
+			"id": "3",
+			"role": "Ученик",
+			"email": "abuyvalo@mail.ru",
+			"password": "11111111"
+		},
+		{
+			"id": "4",
+			"role": "Преподаватель",
+			"email": "test@mail.ru",
+			"password": "11111111"
+		}
+	]
+}

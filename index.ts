@@ -2,6 +2,8 @@ import express from 'express';
 import http from 'http';
 import { mainRouter } from './src/routers/main';
 
+import {allBackap} from './src/backap'
+
 // @ts-ignore
 BigInt.prototype.toJSON = function() {       
   return this.toString()
@@ -40,7 +42,9 @@ app.use('/api/main', mainRouter)
 const start = async() => {
   try {
     server.listen(PORT, HOST, () => {
-      console.log('API server running on host:', HOST, 'port:', PORT)
+      console.log('API server running on host:', HOST, 'port:', PORT);
+
+      allBackap();
     })
   } catch(e:any) {
     //ts-ignore
